@@ -1,0 +1,22 @@
+name: Explore runs
+on: push
+jobs:
+  job-one:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Work for 20 seconds
+        run: |
+          for i in 1 2 3 4; do 
+            echo "Job one is working... $i"
+            sleep 5
+          done
+  job-two:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Work for 20 seconds
+        run: |
+          for i in 1 2 3 4; do 
+            echo "Job two is working... $i"
+            sleep 5
+          done
+  
