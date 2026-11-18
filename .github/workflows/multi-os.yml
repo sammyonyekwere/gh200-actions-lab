@@ -1,0 +1,26 @@
+name: Multi-OS Runners
+on: workflow_dispatch
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+    steps:
+      - run: git --version
+      - run: |
+          echo "OS is $RUNNER_OS"
+          cat /etc/os-release | head -n 2
+
+  windows:
+    runs-on: windows-latest
+    steps:
+      - run: git --version
+      - run: |
+          echo "OS is $env:RUNNER_OS"
+          (Get-CimInstance Win32_OperatingSystem).Caption
+
+  macos:
+    runs-on: macos-latest
+    steps:
+      - run: git --version
+      - run: |
+          echo "OS is $RUNNER_OS"
+          sw_vers
