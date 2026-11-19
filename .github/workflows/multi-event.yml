@@ -1,0 +1,12 @@
+name: Multi Event
+on:
+  push:
+  workflow_dispatch:
+  issues:
+    types: [opened, labeled] 
+
+jobs:
+  show-event:
+    runs-on: ubuntu-latest
+    steps:
+      -run: echo "This run was triggered by $GITHUB_EVENT_NAME"
