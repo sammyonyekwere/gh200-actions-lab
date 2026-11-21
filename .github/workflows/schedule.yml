@@ -1,0 +1,13 @@
+name: Scheduled
+on: 
+  schedule:
+    - cron: '0/1 * * * *'
+    - cron: '30 9 * * 1-5'
+  workflow_dispatch: 
+jobs:
+  tick:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Event: $GITHUB_EVENT_NAME"
+          echo "UTC time now $(date -u)"
