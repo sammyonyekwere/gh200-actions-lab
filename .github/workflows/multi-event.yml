@@ -1,9 +1,9 @@
 name: Multi Event
 on:
-  push:
+  # push:
   workflow_dispatch:
-  issues:
-    types: [opened, labeled] 
+  # issues:
+  #   types: [opened, labeled] 
 jobs:
   show-event:
     runs-on: ubuntu-latest
