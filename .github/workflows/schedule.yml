@@ -1,8 +1,9 @@
 name: Scheduled
 on: 
   schedule:
-    - cron: '0/1 * * * *'
+    - cron: '0/5 * * * *'
     - cron: '30 9 * * 1-5'
+      timezone: 'Europe/London'
   workflow_dispatch: 
 jobs:
   tick:
