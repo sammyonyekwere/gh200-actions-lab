@@ -1,0 +1,18 @@
+name: Filters
+
+on:
+  push: 
+    branches: 
+      - main
+      - 'release/**'
+      - '!release/**-alpha'
+    tags:
+      - 'v'
+    paths:
+      - 'src/**'
+
+jobs:
+  filtered:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Filters matched for $GITHUB_REF"
