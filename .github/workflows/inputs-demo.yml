@@ -1,0 +1,43 @@
+name: Inputs Demo
+on: 
+  workflow_dispatch:
+    inputs:
+      target:
+        description: 'Target environment'
+        type: choice
+        options: [dev, staging, prod]
+        default: dev
+      dry-run:
+        description: 'Dry run only'
+        type: boolean
+        default: true
+      replicas:
+        description: 'Number of replicas'
+        type: number
+        default: 1
+      note:
+        description: 'optional note'
+        type: string
+        required: false
+
+jobs:
+  show:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print inputs
+        env:
+          TARGET: ${{ inputs.target}}
+          NOTE: ${{ inputs.note }}
+        run: |
+          echo "TARGET: $TARGET"
+          echo "Replicas: ${{ inputs.replicas }}"
+          echo "NOTE: $NOTE"
+      - name: Only when not a dry run
+        if: ${{ !inputs.dry-run }}
+        run: echo "Real deployment step runs"
+      - name: Type check
+        run: |
+          echo "inputs.dry-run is boolean: ${{ inputs.dry-run ==true }}"
+          echo "github.event.inputs.dry-run is text: ${{ github.event.inputs.dry-run == 'true' }}"
+
+  
